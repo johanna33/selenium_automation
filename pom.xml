@@ -110,15 +110,15 @@
     
     <repositories>
 		<repository>
-			<id>verizon.nexus</id>
-			<url>http://v19frdgda01.ebiz.verizon.com:8081/nexus/content/repositories/central/</url>
+			<id>company.nexus</id>
+			<url>http://company.com:8081/nexus/content/repositories/central/</url>
 		</repository>
 	</repositories>
 
 	<pluginRepositories>
 		<pluginRepository>
-			<id>verizon.nexus</id>
-			<url>http://v19frdgda01.ebiz.verizon.com:8081/nexus/content/repositories/central/</url>
+			<id>company.nexus</id>
+			<url>http://company.com:8081/nexus/content/repositories/central/</url>
 		</pluginRepository>
 	</pluginRepositories>
     
