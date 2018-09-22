@@ -1,0 +1,126 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+    
+  <groupId>com.calderon</groupId>
+  <artifactId>automation</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>automation</name>
+  <url>http://maven.apache.org</url>
+    
+    
+    <properties>
+		<!-- Dependencies Versions -->
+		<selenium.version>2.53.1</selenium.version>
+		<log4j.version>2.5</log4j.version>
+		<testng.version>6.9.8</testng.version>
+		<jxl.version>2.4.2</jxl.version>
+		
+		<class.name></class.name>
+		<thread.parallel>1</thread.parallel>
+		<exclude.name>**/*DISABLE*.class</exclude.name>
+    </properties>    
+    
+  <dependencies>
+
+    <!-- SELENIUM webdriver : ui automation -->
+    <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-java</artifactId>
+        <version>${selenium.version}</version>
+    </dependency>
+
+    <!-- LOG4j : logging -->
+    <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-api</artifactId>
+        <version>${log4j.version}</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-core</artifactId>
+        <version>${log4j.version}</version>
+    </dependency>
+
+    <!-- TESTNG : testing -->
+    <dependency>
+        <groupId>org.testng</groupId>
+        <artifactId>testng</artifactId>
+        <version>${testng.version}</version>
+    </dependency>
+
+    <!-- JXL : Excel docs -->
+      <dependency>
+			<groupId>jexcelapi</groupId>
+			<artifactId>jxl</artifactId>
+			<version>${jxl.version}</version>
+      </dependency>
+
+
+  </dependencies>
+   
+    
+    <!--  for test execution , and parallel -->
+    
+
+	<profiles>
+		<profile>
+			<id>testcase</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>2.19.1</version>
+
+						<executions>
+							<execution>
+								<phase>test</phase>
+								<goals>
+									<goal>test</goal>
+								</goals>
+								<configuration>
+									<forkCount>${thread.parallel}</forkCount>
+									<reuseForks>true</reuseForks>
+									<includes>
+										<include>${class.name}</include>
+									</includes>
+									<excludes>
+									   	<exclude>${exclude.name}</exclude>
+									</excludes>
+									<testFailureIgnore>true</testFailureIgnore>
+								</configuration>
+							</execution>
+						</executions>
+
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+ 
+  
+  
+    
+    
+    
+    <!--  To use external Repositories to download dependencies
+    
+    <repositories>
+		<repository>
+			<id>verizon.nexus</id>
+			<url>http://v19frdgda01.ebiz.verizon.com:8081/nexus/content/repositories/central/</url>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>verizon.nexus</id>
+			<url>http://v19frdgda01.ebiz.verizon.com:8081/nexus/content/repositories/central/</url>
+		</pluginRepository>
+	</pluginRepositories>
+    
+    -->
+</project>

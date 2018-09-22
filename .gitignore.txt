@@ -1,0 +1,9 @@
+#ignoring all compiled and systems files
+
+.settings/
+bin/
+log/
+target/
+test-output/
+.classpath
+.project
